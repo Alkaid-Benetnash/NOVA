@@ -152,7 +152,7 @@ static int nova_find_range_node(struct nova_sb_info *sbi,
 	return ret;
 }
 
-inline int nova_search_inodetree(struct nova_sb_info *sbi,
+int nova_search_inodetree(struct nova_sb_info *sbi,
 	unsigned long ino, struct nova_range_node **ret_node)
 {
 	struct rb_root *tree;
@@ -202,7 +202,7 @@ static int nova_insert_range_node(struct nova_sb_info *sbi,
 	return 0;
 }
 
-inline int nova_insert_blocktree(struct nova_sb_info *sbi,
+int nova_insert_blocktree(struct nova_sb_info *sbi,
 	struct rb_root *tree, struct nova_range_node *new_node)
 {
 	int ret;
@@ -214,7 +214,7 @@ inline int nova_insert_blocktree(struct nova_sb_info *sbi,
 	return ret;
 }
 
-inline int nova_insert_inodetree(struct nova_sb_info *sbi,
+int nova_insert_inodetree(struct nova_sb_info *sbi,
 	struct nova_range_node *new_node, int cpu)
 {
 	struct rb_root *tree;
@@ -578,7 +578,7 @@ retry:
 	return ret_blocks / nova_get_numblocks(btype);
 }
 
-inline int nova_new_data_blocks(struct super_block *sb, struct nova_inode *pi,
+int nova_new_data_blocks(struct super_block *sb, struct nova_inode *pi,
 	unsigned long *blocknr,	unsigned int num, unsigned long start_blk,
 	int zero, int cow)
 {
@@ -595,7 +595,7 @@ inline int nova_new_data_blocks(struct super_block *sb, struct nova_inode *pi,
 	return allocated;
 }
 
-inline int nova_new_log_blocks(struct super_block *sb, struct nova_inode *pi,
+int nova_new_log_blocks(struct super_block *sb, struct nova_inode *pi,
 	unsigned long *blocknr, unsigned int num, int zero)
 {
 	int allocated;

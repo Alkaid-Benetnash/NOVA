@@ -36,7 +36,7 @@ static inline void set_scan_bm(unsigned long bit,
 	set_bit(bit, scan_bm->bitmap);
 }
 
-inline void set_bm(unsigned long bit, struct scan_bitmap *bm,
+void set_bm(unsigned long bit, struct scan_bitmap *bm,
 	enum bm_type type)
 {
 	switch (type) {

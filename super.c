@@ -786,18 +786,18 @@ static void nova_put_super(struct super_block *sb)
 	sb->s_fs_info = NULL;
 }
 
-inline void nova_free_range_node(struct nova_range_node *node)
+void nova_free_range_node(struct nova_range_node *node)
 {
 	kmem_cache_free(nova_range_node_cachep, node);
 }
 
-inline void nova_free_blocknode(struct super_block *sb,
+void nova_free_blocknode(struct super_block *sb,
 	struct nova_range_node *node)
 {
 	nova_free_range_node(node);
 }
 
-inline void nova_free_inode_node(struct super_block *sb,
+void nova_free_inode_node(struct super_block *sb,
 	struct nova_range_node *node)
 {
 	nova_free_range_node(node);
@@ -812,12 +812,12 @@ struct nova_range_node *nova_alloc_range_node(struct super_block *sb)
 	return p;
 }
 
-inline struct nova_range_node *nova_alloc_blocknode(struct super_block *sb)
+struct nova_range_node *nova_alloc_blocknode(struct super_block *sb)
 {
 	return nova_alloc_range_node(sb);
 }
 
-inline struct nova_range_node *nova_alloc_inode_node(struct super_block *sb)
+struct nova_range_node *nova_alloc_inode_node(struct super_block *sb)
 {
 	return nova_alloc_range_node(sb);
 }

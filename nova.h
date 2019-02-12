@@ -862,12 +862,12 @@ extern void nova_error_mng(struct super_block *sb, const char *fmt, ...);
 /* balloc.c */
 int nova_alloc_block_free_lists(struct super_block *sb);
 void nova_delete_free_lists(struct super_block *sb);
-inline struct nova_range_node *nova_alloc_blocknode(struct super_block *sb);
-inline struct nova_range_node *nova_alloc_inode_node(struct super_block *sb);
-inline void nova_free_range_node(struct nova_range_node *node);
-inline void nova_free_blocknode(struct super_block *sb,
+struct nova_range_node *nova_alloc_blocknode(struct super_block *sb);
+struct nova_range_node *nova_alloc_inode_node(struct super_block *sb);
+void nova_free_range_node(struct nova_range_node *node);
+void nova_free_blocknode(struct super_block *sb,
 	struct nova_range_node *bnode);
-inline void nova_free_inode_node(struct super_block *sb,
+void nova_free_inode_node(struct super_block *sb,
 	struct nova_range_node *bnode);
 extern void nova_init_blockmap(struct super_block *sb, int recovery);
 extern int nova_free_data_blocks(struct super_block *sb, struct nova_inode *pi,
@@ -880,11 +880,11 @@ extern int nova_new_data_blocks(struct super_block *sb, struct nova_inode *pi,
 extern int nova_new_log_blocks(struct super_block *sb, struct nova_inode *pi,
 	unsigned long *blocknr, unsigned int num, int zero);
 extern unsigned long nova_count_free_blocks(struct super_block *sb);
-inline int nova_search_inodetree(struct nova_sb_info *sbi,
+int nova_search_inodetree(struct nova_sb_info *sbi,
 	unsigned long ino, struct nova_range_node **ret_node);
-inline int nova_insert_blocktree(struct nova_sb_info *sbi,
+int nova_insert_blocktree(struct nova_sb_info *sbi,
 	struct rb_root *tree, struct nova_range_node *new_node);
-inline int nova_insert_inodetree(struct nova_sb_info *sbi,
+int nova_insert_inodetree(struct nova_sb_info *sbi,
 	struct nova_range_node *new_node, int cpu);
 int nova_find_free_slot(struct nova_sb_info *sbi,
 	struct rb_root *tree, unsigned long range_low,
@@ -892,7 +892,7 @@ int nova_find_free_slot(struct nova_sb_info *sbi,
 	struct nova_range_node **next);
 
 /* bbuild.c */
-inline void set_bm(unsigned long bit, struct scan_bitmap *bm,
+void set_bm(unsigned long bit, struct scan_bitmap *bm,
 	enum bm_type type);
 int nova_rebuild_inode(struct super_block *sb, struct nova_inode_info *si,
 	u64 pi_addr);

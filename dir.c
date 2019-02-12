@@ -340,7 +340,7 @@ int nova_remove_dentry(struct dentry *dentry, int dec_link, u64 tail,
 	return 0;
 }
 
-inline int nova_replay_add_dentry(struct super_block *sb,
+int nova_replay_add_dentry(struct super_block *sb,
 	struct nova_inode_info_header *sih, struct nova_dentry *entry)
 {
 	if (!entry->name_len)
@@ -351,7 +351,7 @@ inline int nova_replay_add_dentry(struct super_block *sb,
 			entry->name, entry->name_len, entry);
 }
 
-inline int nova_replay_remove_dentry(struct super_block *sb,
+int nova_replay_remove_dentry(struct super_block *sb,
 	struct nova_inode_info_header *sih,
 	struct nova_dentry *entry)
 {
